@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: 'Bellota', cursive, sans-serif;
+  background: #cfcece;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.header {
+  text-align: center;
+}
+.header h2 {
+  font-weight: 800;
+}
+.header h3 {
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+  width: 80%;
+  margin: auto;
+  background: #bebebe;
+  border-radius: 8px;
+}
+.favorites h3 {
+  text-align: center;
+}
+
+.housesLayout {
+  display: flex;
+  width: 65%;
+  margin: 1rem auto;
+  justify-content: space-between;
+  flex-direction: row ;
+  flex-wrap: wrap;
+}
+
+.houseCell {
+  width: 40%;
+  padding: 0.7rem;
+}
+
+.houseCell .modal_btn {
+  margin-right: 0;
+}
+
+.houseCell p {
+  padding: 0 .5rem;
+}
+
+form {
+  display: flex;
+  width: 40%;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+label {
+  text-align: center;
+  margin: 0.7rem 0;
+}
+
+form button {
+  margin: 0.7rem 0;
+}
+
+.responseWithoutHouses {
+  text-align: center;
+}
+.loading {
+  color: aquamarine;
+}
+.error {
+  color: crimson;
+}
+
+.showMore {
+  display: flex;
+  margin: auto;
+}
+.showMore button {
+  cursor: pointer;
+  background-color: rgb(78,78,78, 0.4);
+  border: none;
+  border-radius: 5px;
+  margin: .5rem;
+}
+.showMore button:hover {
+  background-color: rgba(4,151,22, 0.4);
+  color: white;
+  border-radius: 5px;
+}
+.showMore button:focus {
+  outline: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  width: 20%;
+  margin: auto;
+}
+
+ul li {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: .3rem 1rem;
+  background: #8191ac;
+  margin: auto;
+  list-style: none;
+
+}
+ul li a{
+  text-decoration: none;
+  color: white;
+}
+ul li a:visited {
+  color: white
+}
+ul li a:active {
+  color: #cfcece
+}
+.description {
+  padding: 1rem;
+}
