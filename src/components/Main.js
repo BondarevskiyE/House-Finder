@@ -14,7 +14,6 @@ class Main extends React.Component {
   }
 
   render() {
-    // let id = 0;
     return (
       <div>
          <div className="main">
@@ -49,7 +48,7 @@ class Main extends React.Component {
                     <p>{item.title}</p>
                     <p>
                       <span>{item.price_formatted}</span>
-                      <button onClick={() => this.props.addFavorite(item)}>
+                      <button className='favorite_btn' onClick={() => this.props.addFavorite(item)}>
                         Добавить в избранное
                       </button>
                     </p>

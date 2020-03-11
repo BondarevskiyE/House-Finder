@@ -44,14 +44,16 @@ code {
 .houseCell {
   width: 40%;
   padding: 0.7rem;
-}
-
-.houseCell .modal_btn {
-  margin-right: 0;
+  background: white;
+  margin-bottom: 2rem;
 }
 
 .houseCell p {
+  display: flex;
   padding: 0 .5rem;
+}
+.houseCell p .favorite_btn {
+  margin-left: auto;
 }
 
 form {

@@ -37,7 +37,6 @@ function addMoreHouses(houses) {
 
 export function showMoreHouses(page) {
   return dispatch => {
-    // dispatch(requestHouses(true));
     return fetch(
       `https://api.nestoria.${selectedCountry}/api?encoding=json&pretty=1&page=${page}&action=search_listings&listing_type=rent&place_name=${selectedPlace}`
     )
