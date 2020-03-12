@@ -31,7 +31,7 @@ class Form extends React.Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            if (this.state.city === '') return;
+            if (!this.state.city) return;
             this.props.fetchHouses(this.state.country, this.state.city);
           }}
         >

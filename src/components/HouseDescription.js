@@ -6,21 +6,21 @@ class HouseDescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      house: this.props.houses.filter(
-        item => this.props.match.params.houseId === String(item.id)
-      )[0]
+      house: this.props.location.state.house
     };
   }
 
+
   render() {
+    const {house} = this.state
     return (
       <div className="main description">
-        <img src={this.state.house.img_url} alt="картинка" />
-        <h3>{this.state.house.price_formatted}</h3>
-        <h4>Ключевые слова: {this.state.house.keywords}</h4>
-        <h4>{this.state.house.summary}</h4>
+        <img src={house.img_url} alt="картинка" />
+        <h3>{house.price_formatted}</h3>
+        <h4>Ключевые слова: {house.keywords}</h4>
+        <h4>{house.summary}</h4>
         <h4>
-          <a target="_blink" href={this.state.house.lister_url}>
+          <a target="_blink" href={house.lister_url}>
             Объявление арендодателя
           </a>
         </h4>

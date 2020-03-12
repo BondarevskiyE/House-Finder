@@ -7,12 +7,6 @@ import { Link } from 'react-router-dom'
 
 class Main extends React.Component {
 
-
-  idFinder(item) {
-    let regEx = /\d{15}/;
-    return item.lister_url.match(regEx)[0];
-  }
-
   render() {
     return (
       <div>
@@ -35,10 +29,8 @@ class Main extends React.Component {
 
           <div className="housesLayout">
             {this.props.houses.map(item => {
-              item.id = this.idFinder(item);
               return (
-                <React.Fragment key={item.id}>
-                  <div className={"houseCell"}>
+                  <div key={item.id} className={"houseCell"}>
                     <img
                       src={item.img_url}
                       alt="house"
@@ -48,13 +40,20 @@ class Main extends React.Component {
                     <p>{item.title}</p>
                     <p>
                       <span>{item.price_formatted}</span>
-                      <button className='favorite_btn' onClick={() => this.props.addFavorite(item)}>
+                      <button
+                        className="favorite_btn"
+                        onClick={() => this.props.addFavorite(item)}
+                      >
                         Добавить в избранное
                       </button>
                     </p>
-                    <Link to={`/house/${item.id}`}>Подробнее</Link>
+                  <Link to={{
+                    pathname: `house/${item.id}`,
+                    state: {
+                      house: item
+                    }
+                    }}>Подробнее</Link>
                   </div>
-                </React.Fragment>
               );
             })}
             {this.props.houses.length > 0 && <ShowMore />}

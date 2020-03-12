@@ -6,9 +6,7 @@ class Favorites extends React.Component {
   render() {
     return (
       <div className={"main favorites"}>
-        {this.props.favorites.length !== 0 || (
-          <h3>В избранном пока ничего нет!</h3>
-        )}
+        {!this.props.favorites.length && <h3>В избранном пока ничего нет!</h3>}
         <div className="housesLayout">
           {this.props.favorites.map(item => {
             return (
@@ -17,7 +15,9 @@ class Favorites extends React.Component {
                 <p>{item.title}</p>
                 <p>
                   <span>{item.price_formatted}</span>
-                  <button onClick={() => this.props.deleteFavorite(item.id) }>Удалить из избранного</button>
+                  <button onClick={() => this.props.deleteFavorite(item.id)}>
+                    Удалить из избранного
+                  </button>
                 </p>
               </div>
             );

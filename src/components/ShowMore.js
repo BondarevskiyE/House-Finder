@@ -17,8 +17,9 @@ class ShowMore extends React.Component {
       })
       return
     }
-    this.setState({
-      page: this.state.page + 1
+    this.setState(state => {
+      
+      return {page: state.page + 1}
     })
     this.props.showMore(page)
   }

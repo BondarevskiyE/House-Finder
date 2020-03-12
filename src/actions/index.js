@@ -1,5 +1,11 @@
 let selectedCountry, selectedPlace;
 
+function idFinder(item) {
+  let regEx = /\d{20}/;
+  return item.lister_url.match(regEx)[0];
+}
+
+
 function requestHouses(load) {
   return {
     type: 'LOADING',
@@ -38,7 +44,7 @@ function addMoreHouses(houses) {
 export function showMoreHouses(page) {
   return dispatch => {
     return fetch(
-      `https://api.nestoria.${selectedCountry}/api?encoding=json&pretty=1&page=${page}&action=search_listings&listing_type=rent&place_name=${selectedPlace}`
+      `https://cors-anywhere.herokuapp.com/api.nestoria.${selectedCountry}/api?encoding=json&pretty=1&page=${page}&action=search_listings&listing_type=rent&place_name=${selectedPlace}`
     )
       .then(response => response.json())
       .then(json => {
@@ -54,14 +60,21 @@ export function fetchHouses(country, place) {
   return dispatch => {
     dispatch(requestHouses(true));
     return fetch(
-      `https://api.nestoria.${country}/api?encoding=json&pretty=1&action=search_listings&listing_type=rent&place_name=${place}`
+      `https://cors-anywhere.herokuapp.com/api.nestoria.${country}/api?encoding=json&pretty=1&action=search_listings&listing_type=rent&place_name=${place}`
     )
       .then(response => response.json())
       .then(json => {
-        if (json.response.listings.length === 0) {
-          return dispatch(emptySearch())
+
+        let houses = json.response.listings.map(item => {
+          item.id = idFinder(item);
+          return item;
+        });
+
+        if (houses.length === 0) {
+          return dispatch(emptySearch());
         }
-        return dispatch(receiveHouses(json.response.listings))
+
+        return dispatch(receiveHouses(houses));
       })
       .catch(err => dispatch(errorFetch()));
   }
