@@ -48,7 +48,12 @@ export function showMoreHouses(page) {
     )
       .then(response => response.json())
       .then(json => {
-        return dispatch(addMoreHouses(json.response.listings));
+
+        let houses = json.response.listings.map(item => {
+          item.id = idFinder(item);
+          return item;
+        });
+        return dispatch(addMoreHouses(houses));
       })
       .catch(err => dispatch(errorFetch()));
   };
