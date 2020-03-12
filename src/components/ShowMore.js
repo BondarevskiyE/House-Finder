@@ -1,38 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { showMoreHouses } from '../actions';
 import { connect } from 'react-redux';
 
-class ShowMore extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 2
-    }
-  }
+const ShowMore = props => {
 
-  nextPages(page) {
-    if (this.props.houses.length === 0) {
-      this.setState({
-        page: 2
-      })
+  const [page, setPage] = useState(2)
+
+  function nextPages(page) {
+
+    if (props.houses.length === 0) {
+      setPage(2);
       return
     }
-    this.setState(state => {
-      
-      return {page: state.page + 1}
-    })
-    this.props.showMore(page)
+    setPage(page + 1)
+    props.showMore(page)
   }
 
-  render() {
-    return (
-      <div className={"showMore"}>
-        <button onClick={() => this.nextPages(this.state.page)}>
-          Показать больше
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className={"showMore"}>
+      <button onClick={() => nextPages(page)}>Показать больше</button>
+    </div>
+  );
 }
 
 

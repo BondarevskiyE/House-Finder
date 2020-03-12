@@ -1,31 +1,35 @@
 import React from 'react';
-import {deleteFavorite} from '../actions'
+import { deleteFavorite } from '../actions';
 import { connect } from 'react-redux';
 
-class Favorites extends React.Component {
-  render() {
-    return (
-      <div className={"main favorites"}>
-        {!this.props.favorites.length && <h3>В избранном пока ничего нет!</h3>}
-        <div className="housesLayout">
-          {this.props.favorites.map(item => {
-            return (
-              <div key={item.id} className={"houseCell"}>
-                <img src={item.img_url} alt="house" width="300" height="150" />
-                <p>{item.title}</p>
-                <p>
-                  <span>{item.price_formatted}</span>
-                  <button onClick={() => this.props.deleteFavorite(item.id)}>
-                    Удалить из избранного
-                  </button>
-                </p>
-              </div>
-            );
-          })}
-        </div>
+const Favorites = (props) => {
+
+  return (
+    <div className={"main favorites"}>
+
+      {!props.favorites.length && <h3>В избранном пока ничего нет!</h3>}
+
+      <div className="housesLayout">
+
+        {props.favorites.map(item => {
+
+          return (
+            <div key={item.id} className={"houseCell"}>
+              <img src={item.img_url} alt="house" width="300" height="150" />
+              <p>{item.title}</p>
+              <p>
+                <span>{item.price_formatted}</span>
+                <button onClick={() => props.deleteFavorite(item.id)}>
+                  Удалить из избранного
+                </button>
+              </p>
+            </div>
+          );
+        })}
+
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({

@@ -81,10 +81,9 @@ form button {
 .error {
   color: crimson;
 }
-
 .showMore {
   display: flex;
-  margin: auto;
+  justify-content: center;
 }
 .showMore button {
   cursor: pointer;
